@@ -1,0 +1,48 @@
+/* Container Styles */
+.downloads-container {
+    margin-left: 250px; /* Adjust for side nav */
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .downloads-container h1 {
+    font-size: 2em;
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 20px;
+  }
+  
+  /* List Styles */
+  .downloads-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .downloads-list li {
+    background: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, background 0.3s;
+  }
+  
+  .downloads-list li:hover {
+    background: #007bff; /* Highlight color */
+    color: white;
+    transform: scale(1.02);
+  }
+  
+  .downloads-list a {
+    text-decoration: none;
+    display: block;
+    padding: 15px 20px;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  .downloads-list a:hover {
+    color: white; /* Text color on hover */
+  }
