@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ServiciosService } from '../servicios/crud-service.service';
 
-
 @Component({
   selector: 'app-listado-ips-component',
   standalone: true,
@@ -13,8 +12,8 @@ import { ServiciosService } from '../servicios/crud-service.service';
 })
 export class ListadoIps implements OnInit {
 
-  readonly servicio = inject(ServiciosService);
-   
+  readonly servicio = inject(ServiciosService);  
+     
   usuarios: any[] = [];
   mensajeError:string = '';
 
@@ -38,9 +37,9 @@ export class ListadoIps implements OnInit {
       if (confirm('¿Estás seguro de que deseas eliminar este usuario?')){
       this.servicio.eliminar(id).subscribe({
         next:(response:any)=>{
-          alert('Usuario Eliminado')
-          console.log('eliminar',response);
-          this.obtenerUsuarios();
+          alert('Usuario Eliminado')          
+          console.log('eliminar',response);          
+          this.obtenerUsuarios();                          
         },
         error:(response:any)=>{
           console.log('error',response);
@@ -49,5 +48,5 @@ export class ListadoIps implements OnInit {
       });
     }   
   }
-  }
+  } 
 }

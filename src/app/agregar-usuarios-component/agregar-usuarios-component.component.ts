@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, Input } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ServiciosService } from '../servicios/crud-service.service';
 
@@ -15,6 +15,7 @@ export class AgregarUsuarios {
 
   @Input() id!: number;
   readonly serviciosService = inject(ServiciosService);
+  readonly router = inject(Router);
   userId: any;
   editUserId: any;
   deleteUserId: any;
@@ -52,13 +53,19 @@ export class AgregarUsuarios {
         this.areaValor=response.data.area;
         this.ip_address=response.data.ip_address;
         alert('Se agregó usuario correctamente')
+        if(confirm('Quieres agregar un nuevo usuario?')){
+          this.nombreValor = '';
+          this.areaValor = '';
+          this.ip_address = '';
+        }
+          else{
+        this.router.navigate(['/listado']);}  
       },
       error:(response:any)=>{
         console.log('error',response);
         this.mensajeError = 'Ocurrió un error en el servidor';
       }
     });
-
   }
 
   
@@ -107,6 +114,7 @@ export class AgregarUsuarios {
         next:(response:any)=>{
           alert('Usuario Eliminado')
           console.log('eliminar',response);
+          this.router.navigate(['/listado']);
         },
         error:(response:any)=>{
           console.log('error',response);
