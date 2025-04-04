@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { AuthService } from '../../auth/auth.service';
+
 
 
 @Component({
@@ -11,8 +13,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
   styleUrl: './nav-bar.component.css'
 })
 export class NavBarComponent {
-  isNavVisible = true; // Initially visible
-  toggleNav() {
-    this.isNavVisible = !this.isNavVisible; // Toggle visibility
+  readonly router = inject(Router);
+  isNavVisible = false;
+  constructor(private authService: AuthService) {}
+
+  ngOnInit() {
+    this.isNavVisible = this.authService.isLoggedIn(); 
   }
 }

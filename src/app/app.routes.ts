@@ -3,15 +3,18 @@ import { HomeComponent } from './home-component/home-component.component';
 import { ListadoIps } from './listado-ips-component/listado-ips-component.component';
 import { AgregarUsuarios } from './agregar-usuarios-component/agregar-usuarios-component.component';
 import { DescargasComponent } from './descargas/descargas.component';
-import { PruebaComponent } from './prueba/prueba.component';
+import { LoginComponent } from './login/login/login.component';
+import { AuthGuard } from './auth/auth.guard';
+
+
 
 export const routes: Routes = [
-    { path: 'home', component: HomeComponent },
-    { path: 'prueba', component: PruebaComponent },
-    { path: 'listado', component: ListadoIps },
-    { path: 'agregar', component: AgregarUsuarios },
-    { path: 'agregar/:id', component: AgregarUsuarios },
-    { path: 'descargas', component: DescargasComponent},
+    { path: 'login', component: LoginComponent },
+    { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },  
+    { path: 'listado', component: ListadoIps, canActivate: [AuthGuard] },
+    { path: 'agregar', component: AgregarUsuarios, canActivate: [AuthGuard] },
+    { path: 'agregar/:id', component: AgregarUsuarios, canActivate: [AuthGuard] },
+    { path: 'descargas', component: DescargasComponent, canActivate: [AuthGuard]},
     { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect to Home
 
 ];
