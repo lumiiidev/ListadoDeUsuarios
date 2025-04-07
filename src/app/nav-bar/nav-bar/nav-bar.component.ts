@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { AuthService } from '../../auth/auth.service';
+import { Subscription } from 'rxjs';
 
 
 
@@ -15,9 +16,25 @@ import { AuthService } from '../../auth/auth.service';
 export class NavBarComponent {
   readonly router = inject(Router);
   isNavVisible = false;
-  constructor(private authService: AuthService) {}
+  subscription!: Subscription;
+
+  constructor(private authService: AuthService) {
+    
+  }
 
   ngOnInit() {
-    this.isNavVisible = this.authService.isLoggedIn(); 
+    this.subscription = this.authService.loggingStatus.subscribe(status => {
+      this.isNavVisible = status;
+    });
   }
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
+  }
+    cerrarSesion(){
+    this.authService.removeToken();
+    console.log(this.authService.removeToken())
+    alert('Has Cerrado Sesión Correctamente!');
+    this.router.navigate(['/login']);
+  }
+
 }

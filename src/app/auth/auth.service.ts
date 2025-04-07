@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject, Subscriber } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 export class AuthService {
   private apiUrl = 'http://127.0.0.1:8000/api'; // Adjust this if needed
 
+  loggingStatus = new Subject<boolean>();
+  
   constructor(private http: HttpClient) {}
 
   // Login function
@@ -15,9 +17,6 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/login`, credentials);
   }
 
-  isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
-  }
 
   // Register function
   register(userData: { name: string; email: string; password: string }): Observable<any> {
@@ -37,6 +36,7 @@ export class AuthService {
   // Save token to local storage
   saveToken(token: string): void {
     localStorage.setItem('token', token);
+    this.loggingStatus.next(true);
   }
 
   // Retrieve token from local storage
@@ -46,6 +46,7 @@ export class AuthService {
 
   // Remove token from local storage
   removeToken(): void {
-    localStorage.removeItem('token');
+    localStorage.removeItem('token'); 
+    this.loggingStatus.next(false);   
   }
 }

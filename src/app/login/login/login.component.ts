@@ -38,7 +38,7 @@ export class LoginComponent {
         next: (response) => {
           console.log('Login successful:', response);
           this.authService.saveToken(response.authorization.token);
-          alert('Logged in successfully!');
+          alert('Bievenido Admin!');
           this.router.navigate(['/home']);
           this.loading = false;
         },
@@ -49,4 +49,5 @@ export class LoginComponent {
       });
     }
   }
+  
 }
