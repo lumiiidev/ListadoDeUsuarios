@@ -1,4 +1,6 @@
 .header {
+    margin-left: 280px;
+    margin-right: 5px;
     background: linear-gradient(90deg, #1a73e8, #4285f4);
     color: white;
     font-family: 'Poppins', sans-serif;
@@ -92,8 +94,8 @@
 
 
 .styled-table {
-    width: 80%; /* Adjust table width */
-    margin: 20px auto; /* Center table */
+    width: 70%; /* Adjust table width */
+    margin: 50px auto; /* Center table */
     border-collapse: collapse; /* Remove gaps between borders */
     font-family: Arial, sans-serif;
     font-size: 16px;

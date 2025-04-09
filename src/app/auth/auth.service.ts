@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject, Subscriber } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, Subscriber } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,15 +8,34 @@ import { Observable, Subject, Subscriber } from 'rxjs';
 export class AuthService {
   private apiUrl = 'http://127.0.0.1:8000/api'; // Adjust this if needed
 
-  loggingStatus = new Subject<boolean>();
+  //loggingStatus = new Subject<boolean>();
+  public isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+  isAuthenticated$: Observable<boolean> = this.isAuthenticatedSubject.asObservable();
   
-  constructor(private http: HttpClient) {}
+  isBrowser(): boolean {
+    return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
+  }
+
+  _getToken(): string | null {
+    if (this.isBrowser()) {
+      return localStorage.getItem('token');
+    }
+    return null; // Return null if not in the browser
+  }   
+
+  constructor(private http: HttpClient) {
+    if (this.isBrowser()) {
+      const token = this._getToken();
+      if (token) {
+        this.isAuthenticatedSubject.next(true);
+      }
+    }
+  }
 
   // Login function
   login(credentials: { email: string; password: string }): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, credentials);
   }
-
 
   // Register function
   register(userData: { name: string; email: string; password: string }): Observable<any> {
@@ -36,7 +55,8 @@ export class AuthService {
   // Save token to local storage
   saveToken(token: string): void {
     localStorage.setItem('token', token);
-    this.loggingStatus.next(true);
+    this.isAuthenticatedSubject.next(true); // Update the authentication status
+    //this.loggingStatus.next(true);
   }
 
   // Retrieve token from local storage
@@ -46,7 +66,8 @@ export class AuthService {
 
   // Remove token from local storage
   removeToken(): void {
-    localStorage.removeItem('token'); 
-    this.loggingStatus.next(false);   
+    localStorage.removeItem('token');
+    this.isAuthenticatedSubject.next(false); // Update the authentication status 
+    //this.loggingStatus.next(false);   
   }
 }

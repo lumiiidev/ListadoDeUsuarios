@@ -1,6 +1,14 @@
-<div *ngIf="isLoggedIn">
-  <app-nav-bar></app-nav-bar>
-</div>
-<div class="content"> 
-  <router-outlet></router-outlet>
-</div>
+<ng-container *ngIf="status$ | async; else loginTemplate">
+  <div>
+    <app-nav-bar></app-nav-bar>
+  </div>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</ng-container>
+<ng-template #loginTemplate>
+  <div>
+    <router-outlet></router-outlet>  
+  </div>  
+</ng-template>
+  

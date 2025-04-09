@@ -15,6 +15,6 @@ export const routes: Routes = [
     { path: 'agregar', component: AgregarUsuarios, canActivate: [AuthGuard] },
     { path: 'agregar/:id', component: AgregarUsuarios, canActivate: [AuthGuard] },
     { path: 'descargas', component: DescargasComponent, canActivate: [AuthGuard]},
-    { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect to Home
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
 
 ];

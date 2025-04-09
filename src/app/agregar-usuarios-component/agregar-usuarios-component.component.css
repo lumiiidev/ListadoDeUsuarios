@@ -1,17 +1,69 @@
-.header {
-    background: linear-gradient(90deg, #1a73e8, #4285f4);
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    padding: 10px 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+/* Container Styles */
+.downloads-container {
+    margin-left: 250px; /* Adjust for side nav */
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
   }
   
+  .downloads-container h1 {
+    font-size: 2em;
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 20px;
+  }
   
+  /* List Styles */
+  .downloads-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .downloads-list li {
+    background: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, background 0.3s;
+  }
+  
+  .downloads-list li:hover {
+    background: #007bff; /* Highlight color */
+    color: white;
+    transform: scale(1.02);
+  }
+  
+  .downloads-list a {
+    text-decoration: none;
+    display: block;
+    padding: 15px 20px;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  .downloads-list a:hover {
+    color: white; /* Text color on hover */
+  }
 
+  .styled-button {
+    background-color: #007bff; /* Matches the table header color */
+    color: white; /* White text for contrast */
+    border: none; /* Removes default borders */
+    border-radius: 5px; /* Smooth rounded corners */
+    padding: 10px 20px; /* Comfortable button size */
+    cursor: pointer; /* Adds a pointer cursor */
+    font-family: Arial, sans-serif; /* Matches table font */
+    font-size: 16px; /* Matches table text size */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.2s ease-in-out, background-color 0.3s ease; /* Adds hover effects */
+}
+
+.styled-button:hover {
+    background-color: #0056b3; /* Slightly darker shade on hover */
+    transform: scale(1.05); /* Makes the button pop on hover */
+}
 .nombre {
     width: 100%;
     padding: 12px;
@@ -32,6 +84,7 @@
     transition: border-color 0.2s;
 }
 
+/* Unique styles for the special box */
 .ip {
     width: 100%;
     padding: 12px;
@@ -42,57 +95,16 @@
     transition: border-color 0.2s;
 }
 
-
-.styled-button {
-    display: flex; /* Ensures Flexbox layout for buttons */
-    justify-content:space-between; /* Centers the buttons */
-    flex-direction: column;
-    gap: 20px; /* Adds space between buttons */
-    margin: 30px; /* Adds space around the button group */
-    background-color: #007bff; /* Matches the table header color */
-    color: white; /* White text for contrast */
-    border: none; /* Removes default borders */
-    border-radius: 5px; /* Smooth rounded corners */
-    padding: 10px 20px; /* Comfortable button size */
-    cursor: pointer; /* Adds a pointer cursor */
-    font-family: Arial, sans-serif; /* Matches table font */
-    font-size: 16px; /* Matches table text size */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    transition: transform 0.2s ease-in-out, background-color 0.3s ease; /* Adds hover effects */
-}
-
-.styled-button:hover {
-    background-color: #0056b3; /* Slightly darker shade on hover */
-    transform: scale(1.05); /* Makes the button pop on hover */
-}
-
-.borrar-button {
-    display: flex; /* Ensures Flexbox layout for buttons */
-    justify-content:space-between; /* Centers the buttons */
-    flex-direction: column;
-    gap: 20px; /* Adds space between buttons */
-    margin: 30px; /* Adds space around the button group */
-    background-color: #ff0000; /* Matches the table header color */
-    color: white; /* White text for contrast */
-    border: none; /* Removes default borders */
-    border-radius: 5px; /* Smooth rounded corners */
-    padding: 10px 20px; /* Comfortable button size */
-    cursor: pointer; /* Adds a pointer cursor */
-    font-family: Arial, sans-serif; /* Matches table font */
-    font-size: 16px; /* Matches table text size */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    transition: transform 0.2s ease-in-out, background-color 0.3s ease; /* Adds hover effects */
-}
-
-.borrar-button:hover {
-    background-color: #ff0101; /* Slightly darker shade on hover */
-    transform: scale(1.05); /* Makes the button pop on hover */
-}
-
-.button-colum{
-    display: flex;
-    flex-direction: row;
-    /* justify-content:center; */
-    justify-content: space-between;
-    align-items: stretch;
-}
+.header {
+    margin-left: 280px;
+    margin-right: 5px;
+    background: linear-gradient(90deg, #1a73e8, #4285f4);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
