@@ -5,16 +5,18 @@ import { AgregarUsuarios } from './agregar-usuarios-component/agregar-usuarios-c
 import { DescargasComponent } from './descargas/descargas.component';
 import { LoginComponent } from './login/login/login.component';
 import { AuthGuard } from './auth/auth.guard';
+import { RegisterComponent } from './register/register.component';
 
 
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
+    { path: 'registro', component: RegisterComponent},
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },  
     { path: 'listado', component: ListadoIps, canActivate: [AuthGuard] },
     { path: 'agregar', component: AgregarUsuarios, canActivate: [AuthGuard] },
     { path: 'agregar/:id', component: AgregarUsuarios, canActivate: [AuthGuard] },
     { path: 'descargas', component: DescargasComponent, canActivate: [AuthGuard]},
-    { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect to Home
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
 
 ];

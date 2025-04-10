@@ -1,0 +1,47 @@
+<section class="hero">
+    <h2>Bienvenido al registro para el Sistema de Administración de IPs</h2>
+    <h3>Por favor, llena los siguientes campos: </h3>
+</section>
+
+<body>    
+    <div>
+        <form class="form" [formGroup]="user">
+            <label>Nombre: </label>
+            <input (input)="onTyping()" formControlName="name" required placeholder="José López García" />
+            <span *ngIf="user.get('name')?.hasError('required')">
+                campo requerido
+            </span>        
+            <span *ngIf="user.get('name')?.hasError('minlength')">
+                Nombre muy corto
+            </span>
+            <span *ngIf="user.get('name')?.hasError('maxlength')">
+                nombre muy largo
+            </span>        
+            <label>Email: </label>    
+            <input formControlName="email" required placeholder="usuario@mail.com" />
+            <span *ngIf="user.get('email')?.hasError('required')">
+                campo requerido
+            </span>
+            <span *ngIf="user.get('email')?.hasError('email')">            
+                email no es valido
+            </span>
+            <label>Contraseña: </label>
+            <input formControlName="password" required type="password" placeholder="contraseña" />
+            <span *ngIf="user.get('password')?.hasError('required')">
+                campo requerido
+            </span>
+            <span *ngIf="user.get('password')?.hasError('minlength')">
+                contraseña muy corta
+            </span> 
+            <span *ngIf="user.get('password')?.hasError('maxlength')">
+                contraseña muy larga
+            </span>        
+            <button (click)="onSubmit()" type="submit">Registrar</button>
+
+            <div *ngIf="!isTyping">
+                <label>¿Ya cuentas con un usuario registrado?</label>
+                <button (click)="redireccionALogin()" >Inicia Sesión Aquí</button>
+            </div>
+        </form>
+    </div>
+    </body>

@@ -16,7 +16,7 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
   errorMessage: string = '';
-
+  isTyping: boolean = false;
   loading: boolean = false;
 
   loginForm: FormGroup = this.formBuilder.group({
@@ -49,5 +49,11 @@ export class LoginComponent {
       });
     }
   }
+  registrar(){
+    this.router.navigate(['/registro']);
+  }
+  onTyping() {  
+        this.isTyping = this.loginForm.controls['email'].value.trim().length != 0;
+    }    
   
 }

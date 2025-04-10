@@ -1,4 +1,6 @@
 .header {
+    margin-left: 280px;
+    margin-right: 5px;
     background: linear-gradient(90deg, #1a73e8, #4285f4);
     color: white;
     font-family: 'Poppins', sans-serif;
@@ -92,27 +94,32 @@
 
 
 .styled-table {
-    width: 80%; /* Adjust table width */
-    margin: 20px auto; /* Center table */
-    border-collapse: collapse; /* Remove gaps between borders */
+   display:-ms-grid;
+    width: 60%; /* Adjust table width */
+    margin: 10px auto; /* Center table */
+    border-collapse:collapse; /* Remove gaps between borders */
     font-family: Arial, sans-serif;
     font-size: 16px;
     text-align: left;
   }
 
-  .styled-table thead tr {
-    background-color: #007bff; /* Blue header */
-    color: white; /* White text */
-  }
+  /* Assign specific widths to columns */
+.styled-table th:nth-child(1), .styled-table td:nth-child(1) {
+  width: 50%; /* Wider "Nombre" column */
+}
 
-  .styled-table th, .styled-table td {
-    border: 1px solid #dddddd; /* Light gray borders */
-    padding: 12px 15px; /* Cell padding */
-  }
+.styled-table th:nth-child(2), .styled-table td:nth-child(2) {
+  width: 50%; /* Wider "Área" column */
+}
 
-  .styled-table tbody tr:nth-child(even) {
-    background-color: #f3f3f3; /* Light gray for even rows */
-  }
+.styled-table th:nth-child(3), .styled-table td:nth-child(3) {
+  width: 15%; /* Keep "Dirección IP" compact */
+}
+
+.styled-table th:nth-child(4), .styled-table td:nth-child(4),
+.styled-table th:nth-child(5), .styled-table td:nth-child(5) {
+  width: 10%; /* Smaller "Editar" and "Eliminar" columns */
+}
 
   .styled-table tbody tr:hover {
     background-color: #f1f1f1; /* Hover effect */

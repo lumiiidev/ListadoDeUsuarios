@@ -1,7 +1,7 @@
-<body class="body">
+<body class="body">    
     <form class="form" (submit)="onSubmit()" [formGroup]="loginForm" >
     <label class="label">Email:</label>
-    <input class="input" type="email" formControlName="email" required />
+    <input class="input" (input)="onTyping()" type="email" formControlName="email" required />
     <span class="error" *ngIf="loginForm.get('email')?.hasError('required')">
         campo requerido
     </span>
@@ -13,7 +13,11 @@
     <input class="input" type="password" formControlName="password" required />
     <br />
     <button class="button" type="submit">Login</button>
-    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
-    <span class="cargando" *ngIf="loading"> Cargando ... </span>
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p> <br> <br>
+    <span class="cargando" *ngIf="loading"> Cargando Sesión ... </span>
+    <div *ngIf="!isTyping" >
+        <label class="label">Eres nuevo en el sistema?</label>
+        <button class="button" type="submit" (click)="registrar()">Registrate aquí</button>
+    </div> 
   </form>
 </body>
