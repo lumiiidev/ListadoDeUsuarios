@@ -6,12 +6,14 @@ import { DescargasComponent } from './descargas/descargas.component';
 import { LoginComponent } from './login/login/login.component';
 import { AuthGuard } from './auth/auth.guard';
 import { RegisterComponent } from './register/register.component';
+import { RegadminComponent } from './regadmin/regadmin.component';
 
 
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'registro', component: RegisterComponent},
+    { path: 'regadmin', component: RegadminComponent},
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },  
     { path: 'listado', component: ListadoIps, canActivate: [AuthGuard] },
     { path: 'agregar', component: AgregarUsuarios, canActivate: [AuthGuard] },

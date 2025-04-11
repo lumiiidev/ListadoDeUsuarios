@@ -1,5 +1,6 @@
-<body class="body">    
+<body class="body">       
     <form class="form" (submit)="onSubmit()" [formGroup]="loginForm" >
+    <label class="label">Sistema de Administración de IPs</label>
     <label class="label">Email:</label>
     <input class="input" (input)="onTyping()" type="email" formControlName="email" required />
     <span class="error" *ngIf="loginForm.get('email')?.hasError('required')">
